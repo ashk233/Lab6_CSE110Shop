@@ -1,7 +1,7 @@
 // product-item.js
 
 class ProductItem extends HTMLElement {
-  constructor() {
+  constructor(product) {
     super();
     
     const shadow = this.attachShadow({mode: 'open'});
@@ -9,20 +9,20 @@ class ProductItem extends HTMLElement {
     const wrapper = document.createElement('li');
     wrapper.setAttribute('class','product');
     const img = document.createElement('img');
-    img.setAttribute('src',this.getAttribute('image'));
-    img.setAttribute('alt',this.getAttribute('title'));
+    img.setAttribute('src',product['image']);
+    img.setAttribute('alt',product['title']);
     wrapper.appendChild(img);
     const title = document.createElement('p');
     title.setAttribute('class','title');
-    title.textContent = this.getAttribute('title');
+    title.textContent = product['title'];
     wrapper.appendChild(title);
     const price = document.createElement('p');
     price.setAttribute('class','price');
-    price.textContent = this.getAttribute('price');
+    price.textContent = product['price'];
     wrapper.appendChild(price);
     const button = document.createElement('button');
     button.textContent = 'Add to Cart';
-    button.onclick = alert('Added to Cart!');
+    button.addEventListener('click', alert('Added to Cart!')) ;
     wrapper.appendChild(button);
 
     const style = document.createElement('style');
