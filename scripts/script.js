@@ -2,6 +2,7 @@
 let myStorage = window.localStorage;
 const productList = document.getElementById('product-list');
 let products = [];
+let cart = [];
 
 window.addEventListener('DOMContentLoaded', () => {
   if (myStorage.getItem('products') == null) {
@@ -11,7 +12,6 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   let data = JSON.parse(myStorage.getItem('products'));
   for (let i = 0; i < data.length; i++) {
-    console.log(data[i]);
     productList.appendChild(new ProductItem(data[i]));
   }  
 });
