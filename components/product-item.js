@@ -26,13 +26,12 @@ class ProductItem extends HTMLElement {
     price.textContent = product['price'];
     wrapper.appendChild(price);
     const button = document.createElement('button');
-
     if (cart.indexOf(product['id']) == -1) {
       button.textContent = 'Add to Cart';
       button.setAttribute('onclick', "alert('Added to Cart!')");
     } else {
-      this.textContent = 'Remove from Cart';
-        button.setAttribute('onclick', "alert('Removed from Cart!')");
+      button.textContent = 'Remove from Cart';
+      button.setAttribute('onclick', "alert('Removed from Cart!')");
     }
     button.addEventListener('click',function() {
       if (this.textContent == 'Add to Cart') {
