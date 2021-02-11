@@ -3,7 +3,7 @@
 class ProductItem extends HTMLElement {
   constructor(product) {
     super();
-    
+    const cartCount = document.getElementById('cart-count');
     const shadow = this.attachShadow({mode: 'open'});
 
     const wrapper = document.createElement('li');
@@ -26,8 +26,12 @@ class ProductItem extends HTMLElement {
     button.addEventListener('click',function() {
       if (this.textContent == 'Add to Cart') {
         this.textContent = 'Remove from Cart';
+        button.setAttribute('onclick', "alert('Removed from Cart!')");
+        cartCount.textContent++;
       } else {
         this.textContent = 'Add to Cart';
+        button.setAttribute('onclick', "alert('Added to Cart!')");
+        cartCount.textContent--;
       }
     });
     wrapper.appendChild(button);
