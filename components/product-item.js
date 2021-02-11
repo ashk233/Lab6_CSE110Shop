@@ -22,7 +22,7 @@ class ProductItem extends HTMLElement {
     wrapper.appendChild(price);
     const button = document.createElement('button');
     button.textContent = 'Add to Cart';
-    button.addEventListener('click', alert('Added to Cart!')) ;
+    button.setAttribute('onclick', "alert('Added to Cart!')") ;
     wrapper.appendChild(button);
 
     const style = document.createElement('style');
