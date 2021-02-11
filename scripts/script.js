@@ -11,6 +11,11 @@ window.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < data.length; i++) {
       productList.appendChild(new ProductItem(data[i]));
     }
+  } else {
+    let data = JSON.parse(myStorage.getItem('products'));
+    for (let i = 0; i < data.length; i++) {
+      productList.appendChild(new ProductItem(data[i]));
+    }
   }
   
 });
