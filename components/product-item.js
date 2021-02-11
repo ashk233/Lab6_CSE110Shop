@@ -26,7 +26,7 @@ class ProductItem extends HTMLElement {
     wrapper.appendChild(title);
     const price = document.createElement('p');
     price.setAttribute('class','price');
-    price.textContent = product['price'];
+    price.textContent = '$'+ product['price'];
     wrapper.appendChild(price);
     const button = document.createElement('button');
     if (cart.indexOf(product['id']) == -1) {
