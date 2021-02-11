@@ -39,6 +39,7 @@ nav {
   padding: 10px;
 }
 
+/* modified the paths in order to display the icons */
 #shop-icon {
   content: url("../assets/shop-icon.png");
 }
