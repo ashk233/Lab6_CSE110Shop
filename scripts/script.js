@@ -1,8 +1,6 @@
 // Script.js
 let myStorage = window.localStorage;
 const productList = document.getElementById('product-list');
-let products = [];
-let cart = [];
 
 window.addEventListener('DOMContentLoaded', () => {
   if (myStorage.getItem('products') == null) {
