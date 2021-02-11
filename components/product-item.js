@@ -4,7 +4,9 @@ class ProductItem extends HTMLElement {
   constructor(product) {
     super();
     let myStorage = window.localStorage;
-    myStorage.setItem('cart','[]');
+    if (myStorage.getItem('cart') == null) {
+      myStorage.setItem('cart','[]');
+    }
     let cart = JSON.parse(myStorage.getItem('cart'));
     const cartCount = document.getElementById('cart-count');
     const shadow = this.attachShadow({mode: 'open'});
