@@ -9,6 +9,9 @@ class ProductItem extends HTMLElement {
     }
     let cart = JSON.parse(myStorage.getItem('cart'));
     const cartCount = document.getElementById('cart-count');
+    if (myStorage.getItem('cart')!= null) {
+      cartCount.textContent = JSON.parse(myStorage.getItem('cart')).length;
+    }
     const shadow = this.attachShadow({mode: 'open'});
 
     const wrapper = document.createElement('li');
