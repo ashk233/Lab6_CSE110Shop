@@ -3,6 +3,9 @@
 class ProductItem extends HTMLElement {
   constructor(product) {
     super();
+    let myStorage = window.localStorage;
+    myStorage.setItem('cart','[]');
+    let cart = JSON.parse(myStorage.getItem('cart'));
     const cartCount = document.getElementById('cart-count');
     const shadow = this.attachShadow({mode: 'open'});
 
@@ -21,17 +24,29 @@ class ProductItem extends HTMLElement {
     price.textContent = product['price'];
     wrapper.appendChild(price);
     const button = document.createElement('button');
-    button.textContent = 'Add to Cart';
-    button.setAttribute('onclick', "alert('Added to Cart!')");
+
+    if (cart.indexOf(product['id']) == -1) {
+      button.textContent = 'Add to Cart';
+      button.setAttribute('onclick', "alert('Added to Cart!')");
+    } else {
+      this.textContent = 'Remove from Cart';
+        button.setAttribute('onclick', "alert('Removed from Cart!')");
+    }
     button.addEventListener('click',function() {
       if (this.textContent == 'Add to Cart') {
         this.textContent = 'Remove from Cart';
         button.setAttribute('onclick', "alert('Removed from Cart!')");
-        cartCount.textContent++;
+        cartCount.textContent++; 
+        let cart = JSON.parse(myStorage.getItem('cart'));
+        cart.push(product['id']);
+        myStorage.setItem('cart',JSON.stringify(cart));
       } else {
         this.textContent = 'Add to Cart';
         button.setAttribute('onclick', "alert('Added to Cart!')");
         cartCount.textContent--;
+        let cart = JSON.parse(myStorage.getItem('cart'));
+        cart.splice(cart.indexOf(product['id']),1);
+        myStorage.setItem('cart',JSON.stringify(cart));
       }
     });
     wrapper.appendChild(button);
